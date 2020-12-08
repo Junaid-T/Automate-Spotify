@@ -1,0 +1,5 @@
+__pycache__/
+.vscode
+venv
+TEST.py 
+secrets.py
