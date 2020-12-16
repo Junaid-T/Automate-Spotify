@@ -32,6 +32,7 @@ class Main:
         print("Creating playlist...")
         return playlist_id
     
+    # TO SELF - SEARCH BY TRACK AND ITERATE THROUGH IF ARTIST MATCHES
     def search_music(self):
         uri_list = []
         missed_list = []
