@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+from database import Database
+
 class Get_Music :
     def ___init__(self):
         self.soup = ""
@@ -62,4 +64,5 @@ class Get_Music :
             item = {"Title": titles[i], "Artists": artists[i]}
             clean_list.append(item)
         
-        return clean_list
+        old_list = Database().get_music()
+        return clean_list + old_list

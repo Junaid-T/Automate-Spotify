@@ -5,6 +5,7 @@ import json
 from secrets import user_id
 from refresh import Refresh
 from get_music import Get_Music
+from database import Database
 
 
 class Main:
@@ -40,7 +41,7 @@ class Main:
             track = song["Title"]
             artist = song["Artists"]
 
-            url = f"https://api.spotify.com/v1/search?q=track:{track}%20artist:{artist}&type=track"
+            url = f"https://api.spotify.com/v1/search?q=track:{track}%20artist:{artist[0]}&type=track"
 
             headers = {
                 "Content-Type":"application/json",
@@ -56,6 +57,8 @@ class Main:
             else:
                 missed_list.append({"Title": track, "Artists": artist})
         print("Finding music...")
+        Database().delete_music()
+        Database().push_music(missed_list)
         return uri_list
 
     # DONE BY PASSING THE URI'S INTO THE BODY - NOT WORKING - NEED TO FIX
